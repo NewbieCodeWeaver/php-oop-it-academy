@@ -1,5 +1,7 @@
 body {
-    background-color: #328173;
+    background-image: url("https://cdn.pixabay.com/photo/2020/08/09/14/25/business-5475664_1280.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 h1 {
@@ -19,7 +21,12 @@ h1 {
 
 }
 
-/* Formularios */
+#body {
+    background-color: #cccccc24;
+    padding: 25px;
+}
+
+/* Formulario */
 
 
 #label-ingresar {
@@ -36,13 +43,16 @@ input[type=text] {
 }
 
 input[type=submit] {
-    width: 100%;
     margin-top: 25px;
     width: 100%;
+    border: 0px;
+    background-color: #0099946e;
+    padding: 8px;
 
 }
 
 #php {
-    margin-top: 50px;
+    padding-top: 30px;
     font-family: monospace;
+    text-align: center;
 }
