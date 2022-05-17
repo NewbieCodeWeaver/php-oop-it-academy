@@ -1,121 +1,122 @@
-<html>
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Banco online</title>
+    <link rel="stylesheet" href="estilos.css">
 
 <BODY>
-    <div>
+    <div id="caja-principal">
         <div id="header">
             <h1>Banco Online</h1>
         </div>
         <div id="body">
             <FORM METHOD="POST">
-                Ingresar<br>
+                <div id="label-ingresar">Ingresar</div>
                 <INPUT TYPE="TEXT" NAME="cantidadIngresar"><br>
-                Retirar<br>
+                <div id="label-retirar">Retirar</div>
                 <INPUT TYPE="TEXT" NAME="cantidadRetirar"><br>
                 <INPUT TYPE="SUBMIT">
             </FORM>
         </div>
-        <div id="footer"></div>
-    </div><?php
+        <div id="footer"></div><div id="php"><?php
 
 
-            session_start();
+session_start();
 
-            class cuentas
-            {
+class cuentas
+{
 
-                private $numeroCuenta;
-                private $nombre;
-                private $apellidos;
-                private $saldo;
-
-
-                public function __construct($numeroCuenta, $nombre, $apellidos, $saldo = 0)
-                { // predeterminado 0 euros
-
-                    $this->numeroCuenta = $numeroCuenta;
-                    $this->nombre = $nombre;
-                    $this->apellidos = $apellidos;
-                    $this->saldo = $saldo;
-                }
-
-                public function getSaldo()
-                {
+    private $numeroCuenta;
+    private $nombre;
+    private $apellidos;
+    private $saldo;
 
 
-                    return $this->saldo;
-                }
+    public function __construct($numeroCuenta, $nombre, $apellidos, $saldo = 0)
+    { // predeterminado 0 euros
 
-                public function getNombre()
-                {
+        $this->numeroCuenta = $numeroCuenta;
+        $this->nombre = $nombre;
+        $this->apellidos = $apellidos;
+        $this->saldo = $saldo;
+    }
 
-
-                    return $this->nombre;
-                }
-
-                public function getApellido()
-                {
-
-
-                    return $this->apellido;
-                }
+    public function getSaldo()
+    {
 
 
-                public function setSaldo($saldo)
-                {
+        return $this->saldo;
+    }
 
-                    $this->saldo = $saldo;
-                }
-
-                public function setApellido($apellido)
-                {
-
-                    $this->apellido = $apellido;
-                }
-
-                function depositarDinero($cantidadIngresar) {
-                $_SESSION["totalSaldo"] = $cantidadIngresar +  $_SESSION["totalSaldo"];
-                
-                echo "El saldo almacenado en la sesion es " . $_SESSION["totalSaldo"];
-
-                    $this->setSaldo($_SESSION["totalSaldo"]);
-
-                    echo "Has ingresado " . $cantidadIngresar . " euros. Tu saldo actual es " . $this->getSaldo() . " euros.";
-                }
+    public function getNombre()
+    {
 
 
-                function retirarDinero($cantidadRetirar)
-                {
+        return $this->nombre;
+    }
 
-                    if ($cantidadRetirar >  $_SESSION["totalSaldo"]) {
-
-                        echo "Error. Saldo insuficiente";
-                    } else {
-
-                        $_SESSION["totalSaldo"] = ($_SESSION["totalSaldo"] - $cantidadRetirar);
-
-                        $this->setSaldo($_SESSION["totalSaldo"]);
-
-                        echo "Has retirado " . $cantidadRetirar . " euros. Tu saldo actual es " . $this->getSaldo() . " euros.";
-                    }
-                }
-            }
-
-            $banco1 = new cuentas(23134, "Carlos", "Martinez", 0);
+    public function getApellido()
+    {
 
 
-            if (!empty($_POST['cantidadIngresar'])) {
+        return $this->apellido;
+    }
 
-                $banco1->depositarDinero($_POST['cantidadIngresar']);
 
-            }
+    public function setSaldo($saldo)
+    {
 
-            if (!empty($_POST['cantidadRetirar'])) {
-                $banco1->retirarDinero($_POST['cantidadRetirar']);
-              //  $_SESSION["totalSaldo"] =  $_SESSION["totalSaldo"] - $_POST['cantidadRetirar'];
-               // echo $_SESSION["totalSaldo"]; 
-    
-            }
-        
-            ?>
+        $this->saldo = $saldo;
+    }
+
+    public function setApellido($apellido)
+    {
+
+        $this->apellido = $apellido;
+    }
+
+    function depositarDinero($cantidadIngresar)
+    {
+        $_SESSION["totalSaldo"] = $cantidadIngresar +  $_SESSION["totalSaldo"];
+
+        $this->setSaldo($_SESSION["totalSaldo"]);
+
+        echo "Has ingresado " . $cantidadIngresar . " euros. Tu saldo actual es " . $this->getSaldo() . " euros.";
+    }
+
+
+    function retirarDinero($cantidadRetirar)
+    {
+
+        if ($cantidadRetirar >  $_SESSION["totalSaldo"]) {
+
+            echo "Error. Saldo insuficiente";
+        } else {
+
+            $_SESSION["totalSaldo"] = ($_SESSION["totalSaldo"] - $cantidadRetirar);
+
+            $this->setSaldo($_SESSION["totalSaldo"]);
+
+            echo "Has retirado " . $cantidadRetirar . " euros. Tu saldo actual es " . $this->getSaldo() . " euros.";
+        }
+    }
+}
+
+$banco1 = new cuentas(23134, "Carlos", "Martinez", 0);
+
+
+if (!empty($_POST['cantidadIngresar'])) {
+
+    $banco1->depositarDinero($_POST['cantidadIngresar']);
+}
+
+if (!empty($_POST['cantidadRetirar'])) {
+    $banco1->retirarDinero($_POST['cantidadRetirar']);
+}
+
+?></div>
+    </div>
 
 </html>

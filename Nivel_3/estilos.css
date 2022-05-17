@@ -1,0 +1,48 @@
+body {
+    background-color: #328173;
+}
+
+h1 {
+
+    text-align: center;
+    padding: 25px;
+
+}
+
+#caja-principal {
+    width: 50%;
+    margin: auto;
+    background-color: #fff;
+    padding-left: 35px;
+    padding-bottom: 35px;
+    padding-right: 25px;
+
+}
+
+/* Formularios */
+
+
+#label-ingresar {
+    margin-bottom: 10px;
+}
+
+#label-retirar {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+input[type=text] {
+    width: 100%;
+}
+
+input[type=submit] {
+    width: 100%;
+    margin-top: 25px;
+    width: 100%;
+
+}
+
+#php {
+    margin-top: 50px;
+    font-family: monospace;
+}
